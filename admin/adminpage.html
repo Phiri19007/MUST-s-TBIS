@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Admin Dashboard</title>
+    <link rel="stylesheet" href="practice.css">
+    <style>
+        /* Basic CSS for layout */
+        .container {
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            height: 100vh;
+        }
+        .sidebar h2 {
+            text-align: center;
+            color: #ff8c00;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 10px;
+            background-color: #444;
+        }
+        .sidebar ul li a:hover {
+            background-color: #ff8c00;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        header {
+            margin-bottom: 20px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .dashboard {
+            display: flex;
+            gap: 15px;
+        }
+        .dashboard .card {
+            width: 22%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Admin Panel</h2>
+            <ul>
+                <li><a href="#" onclick="showDashboard()">Dashboard</a></li>
+                <li><a href="#" onclick="showOrders()">Order Management</a></li>
+                <li><a href="#" onclick="showMenu()">Menu Management</a></li>
+                <li><a href="#" onclick="showUsers()">User Management</a></li>
+                <li><a href="#" onclick="showStaff()">Staff Management</a></li>
+                <li><a href="#" onclick="showDeliveries()">Delivery Management</a></li>
+                <li><a href="#" onclick="showReports()">Reports</a></li>
+                <li><a href="#" onclick="showPromotions()">Promotions</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+            <header>
+                <h1>Restaurant Admin Dashboard</h1>
+                <p>Manage orders, staff, and food delivery operations efficiently.</p>
+            </header>
+            <section class="dashboard" id="dashboard">
+                <!-- Dashboard Cards -->
+                <div class="card">
+                    <h3>New Orders</h3>
+                    <p id="newOrders">15</p>
+                </div>
+                <div class="card">
+                    <h3>Total Users</h3>
+                    <p id="totalUsers">800</p>
+                </div>
+                <div class="card">
+                    <h3>Active Deliveries</h3>
+                    <p id="activeDeliveries">6</p>
+                </div>
+                <div class="card">
+                    <h3>Pending Issues</h3>
+                    <p id="pendingIssues">3</p>
+                </div>
+            </section>
+            <!-- Dynamic Section for Order Management, Menu Management, etc. -->
+            <div id="dynamicSection"></div>
+        </div>
+    </div>
+
+    <script>
+        // Show the Dashboard
+        function showDashboard() {
+            document.getElementById('dynamicSection').innerHTML = '';
+            document.getElementById('dashboard').style.display = 'flex';
+        }
+
+        // Order Management
+        function showOrders() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('dynamicSection').innerHTML = `
+                <h2>Order Management</h2>
+                <p>Manage customer orders here. View, update, and delete orders.</p>
+                <button onclick="addOrder()">Add New Order</button>
+                <ul id="ordersList">
+                    <li>Order #001 - John Doe - Pizza</li>
+                    <li>Order #002 - Jane Smith - Burger</li>
+                </ul>
+            `;
+        }
+
+        function addOrder() {
+            let ordersList = document.getElementById('ordersList');
+            let newOrder = prompt("Enter new order details:");
+            if (newOrder) {
+                let li = document.createElement('li');
+                li.textContent = newOrder;
+                ordersList.appendChild(li);
+            }
+        }
+
+        // Menu Management
+        function showMenu() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('dynamicSection').innerHTML = `
+                <h2>Menu Management</h2>
+                <p>Manage restaurant menu items here. Add, update, or remove dishes.</p>
+                <button onclick="addMenuItem()">Add New Menu Item</button>
+                <ul id="menuList">
+                    <li>Pizza - $10 <button onclick="editMenuItem(this)">Edit</button> <button onclick="removeMenuItem(this)">Delete</button></li>
+                    <li>Burger - $8 <button onclick="editMenuItem(this)">Edit</button> <button onclick="removeMenuItem(this)">Delete</button></li>
+                </ul>
+            `;
+        }
+
+        function addMenuItem() {
+            let menuList = document.getElementById('menuList');
+            let newMenuItem = prompt("Enter new menu item (format: Name - Price):");
+            if (newMenuItem) {
+                let li = document.createElement('li');
+                li.innerHTML = newMenuItem + ' <button onclick="editMenuItem(this)">Edit</button> <button onclick="removeMenuItem(this)">Delete</button>';
+                menuList.appendChild(li);
+            }
+        }
+
+        function removeMenuItem(element) {
+            if (confirm("Are you sure you want to delete this menu item?")) {
+                element.parentElement.remove();
+            }
+        }
+
+        function editMenuItem(element) {
+            let currentItem = element.parentElement;
+            let newMenuItem = prompt("Update menu item (format: Name - Price):", currentItem.textContent.split(' Edit')[0]);
+            if (newMenuItem) {
+                currentItem.innerHTML = newMenuItem + ' <button onclick="editMenuItem(this)">Edit</button> <button onclick="removeMenuItem(this)">Delete</button>';
+            }
+        }
+
+        // User Management
+        function showUsers() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('dynamicSection').innerHTML = `
+                <h2>User Management</h2>
+                <p>Manage users here. View, edit, and delete users.</p>
+                <button onclick="addUser()">Add New User</button>
+                <ul id="usersList">
+                    <li>John Doe - johndoe@example.com</li>
+                    <li>Jane Smith - janesmith@example.com</li>
+                </ul>
+            `;
+        }
+
+        function addUser() {
+            let usersList = document.getElementById('usersList');
+            let newUser = prompt("Enter new user details (format: Name - Email):");
+            if (newUser) {
+                let li = document.createElement('li');
+                li.textContent = newUser;
+                usersList.appendChild(li);
+            }
+        }
+
+        // Staff Management
+        function showStaff() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('dynamicSection').innerHTML = `
+                <h2>Staff Management</h2>
+                <p>Manage staff here. View, edit, and add new staff members.</p>
+                <button onclick="addStaff()">Add New Staff</button>
+                <ul id="staffList">
+                    <li>John - Chef</li>
+                    <li>Jane - Waiter</li>
+                </ul>
+            `;
+        }
+
+        function addStaff() {
+            let staffList = document.getElementById('staffList');
+            let newStaff = prompt("Enter new staff details (format: Name - Role):");
+            if (newStaff) {
+                let li = document.createElement('li');
+                li.textContent = newStaff;
+                staffList.appendChild(li);
+            }
+        }
+
+        // Delivery Management
+        function showDeliveries() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('dynamicSection').innerHTML = `
+                <h2>Delivery Management</h2>
+                <p>Track and manage food deliveries here.</p>
+                <ul id="deliveriesList">
+                    <li>Order #001 - In Transit</li>
+                    <li>Order #002 - Delivered</li>
+                </ul>
+            `;
+        }
+
+        // Reports
+        function showReports() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('dynamicSection').innerHTML = `
+                <h2>Reports</h2>
+                <p>Generate and view reports here.</p>
+                <button onclick="generateReport()">Generate Report</button>
+                <div id="reportOutput"></div>
+            `;
+        }
+
+        function generateReport() {
+            document.getElementById('reportOutput').innerHTML = 'Report generated successfully!';
+        }
+
+        // Promotions
+        function showPromotions() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('dynamicSection').innerHTML = `
+                <h2>Promotions</h2>
+                <p>Manage promotions here. Add or remove promotions.</p>
+                <button onclick="addPromotion()">Add New Promotion</button>
+                <ul id="promotionsList">
+                    <li>Buy 1 Get 1 Free</li>
+                    <li>20% Off on Orders Above $50</li>
+                </ul>
+            `;
+        }
+
+        function addPromotion() {
+            let promotionsList = document.getElementById('promotionsList');
+            let newPromotion = prompt("Enter new promotion details:");
+            if (newPromotion) {
+                let li = document.createElement('li');
+                li.textContent = newPromotion;
+                promotionsList.appendChild(li);
+            }
+        }
+
+        // Logout functionality
+        function logout() {
+            alert('Logging out...');
+            window.location.href = 'login.html'; // Redirect to login page or handle session logout
+        }
+
+        // Default to show dashboard on load
+        showDashboard();
+    </script>
+</body>
+</html>
