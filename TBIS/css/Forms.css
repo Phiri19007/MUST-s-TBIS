@@ -1,0 +1,183 @@
+body {
+  font-family: Tahoma, sans-serif;
+  background-color: #ffffff;
+}
+
+form {
+  width: 1000px;
+  margin: 20px auto;
+  background-color: #ededed;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+a {
+  align-items: left;
+  margin-top: 50px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input:focus,
+input:active {
+  border-color: red;
+  outline: none;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.row .col {
+  width: 48%;
+}
+
+label {
+  font-weight: bold;
+}
+
+.Gender {
+  margin-bottom: 15px;
+}
+
+.Gender input {
+  margin-right: 5px;
+}
+
+.next-btn {
+  margin-top: 15px;
+  padding: 10px 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  background-color: #bd1e51;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  margin-top: 150px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 10px 40px;
+  background-color: #bd1e51;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* hamburger menu*/
+
+.menu-container {
+  display: flex;
+  /* Use flexbox layout */
+  justify-content: flex-end;
+  /* Align items to the right */
+  padding: 20px;
+  /* Add padding around the container */
+  background-color: gray;
+  /* background for the menu */
+}
+
+.hamburger {
+  cursor: pointer;
+  /* Change cursor to pointer on hover */
+  display: flex;
+  /* Use flexbox for bar alignment */
+  flex-direction: column;
+  /* Stack bars vertically */
+  gap: 5px;
+  /* Space between the bars */
+  margin-right: 20px;
+  /* Space between hamburger and right edge */
+}
+
+.menu-bar {
+  width: 30px;
+  /* Width of each bar */
+  height: 4px;
+  /* Height of each bar */
+  background-color: white;
+  /* Color of the bars */
+  border-radius: 2px;
+  /* Rounded edges for bars */
+}
+
+.nav {
+  display: none;
+  /* Hide the navigation by default */
+  position: absolute;
+  /* Position the menu absolutely */
+  top: 60px;
+  /* Position it below the hamburger icon */
+  right: 20px;
+  /* Align it to the right */
+  background-color: white;
+  /* Background color of the menu */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow for depth */
+  z-index: 1000;
+  /* Ensure it appears above other elements */
+}
+
+.nav ul {
+  list-style: none;
+  /* Remove bullet points from list */
+  padding: 0;
+  /* Remove default padding */
+  margin: 0;
+  /* Remove default margin */
+}
+
+.nav ul li {
+  padding: 10px 20px;
+  /* Padding for list items */
+}
+
+.nav ul li a {
+  text-decoration: none;
+  /* Remove underline from links */
+  color: black;
+  /* Color for link text */
+}
+
+.nav.show {
+  display: block;
+  /* Show the menu when the 'show' class is added */
+}
+
+/**image file**/
+
+#file {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+#file:hover {
+  cursor: pointer;
+}

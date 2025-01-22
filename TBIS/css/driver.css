@@ -1,0 +1,149 @@
+body {
+    font-family: Tahoma, sans-serif;
+    background-color: #f4f5f7;
+    /* Background color*/
+    margin: 0;
+    padding: 0;
+    color: #490b3d;
+}
+
+h2 {
+    text-align: center;
+}
+
+.form-container {
+    background-color: #d3d3d3;
+    width: 1024px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 1024px;
+    margin: 50px auto;
+}
+
+.step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+}
+
+.active-step {
+    background-color: #ff4a4a;
+    /* Active step color */
+}
+
+.inactive-step {
+    background-color: #d3d3d3;
+    /* Inactive step color */
+}
+
+.step-line {
+    flex: 1;
+    height: 2px;
+    background-color: #d3d3d3;
+    margin-top: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+    height: 50px;
+}
+
+input:focus,
+textarea:focus,
+textarea:active,
+input:active {
+    border-color: red;
+    outline: none;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.row .col {
+    width: 48%;
+}
+
+label {
+    font-weight: bold;
+}
+
+.Gender {
+    margin-bottom: 15px;
+}
+
+.Gender input {
+    margin-right: 5px;
+}
+
+.form-group input::placeholder {
+    color: #490b3d;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 50px;
+}
+
+.clear-btn,
+.back-btn,
+.next-btn {
+    padding: 10px 40px;
+    background-color: #bd1e51;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.next-btn {
+    margin-left: auto;
+    /* Align the next button to the right */
+}
+
+.clear-btn:hover,
+.back-btn,
+.next-btn:hover {
+    background-color: #e63939;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
