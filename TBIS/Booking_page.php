@@ -1,11 +1,6 @@
 <?php
 session_start();
 include("database.php");
-// Display error message if it exists
-if (isset($_SESSION['error_message'])) {
-    echo "<p style='color: red;'>" . $_SESSION['error_message'] . "</p>";
-    unset($_SESSION['error_message']);  // Clear the error message after displaying
-}
 
 if (isset($_SESSION['id'])) {
     $userId = $_SESSION['id'];
